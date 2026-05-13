@@ -291,6 +291,13 @@ body {
     .about-text h2 {
         font-size: 2rem;
     }
+
+    /* Bagian yang harus diubah */
+
+    .nav-links {
+        display: none; /* <--- Hapus atau ganti baris ini */
+    }
+
 }
 
 
