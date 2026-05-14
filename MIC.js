@@ -18,10 +18,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 const namaKue = kartuMenu.querySelector('h3').innerText;
                 const hargaKue = kartuMenu.querySelector('.price').innerText;
                 
-                const teksPesan = `Halo Dapurnya Ummi Kratih, saya ingin memesan:\n\n` +
+                const teksPesan = `Halo Dapurnya Ummik Ratih, saya ingin memesan:\n\n` +
                                   `🍰 *Produk:* ${namaKue}\n` +
                                   `💰 *Harga:* ${hargaKue}\n\n` +
-                                  `Mohon info cara pembayarannya ya Ummi. Terima kasih!`;
+                                  `Mohon info cara pembayarannya ya Ummik. Terima kasih!`;
                 
                 bukaWhatsApp(teksPesan);
             }
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (tombolChatAdmin) {
         tombolChatAdmin.addEventListener('click', function(e) {
             e.preventDefault();
-            const pesanUmum = "Halo Ummi Kratih, saya mau tanya-tanya tentang kuenya atau mau request pesanan khusus nih...";
+            const pesanUmum = "Halo Ummik ratih, saya mau tanya-tanya tentang kuenya atau mau request pesanan khusus nih...";
             bukaWhatsApp(pesanUmum);
         });
     }
