@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
         tombol.addEventListener('click', function(e) {
             e.preventDefault();
             
-            // Mencari info produk di dalam kartu menu
+            // Mencari info produk (Nama & Harga) di dalam kartu menu
             const kartuMenu = this.closest('.menu-info');
             if (kartuMenu) {
                 const namaKue = kartuMenu.querySelector('h3').innerText;
@@ -33,12 +33,35 @@ document.addEventListener('DOMContentLoaded', function() {
     if (tombolChatAdmin) {
         tombolChatAdmin.addEventListener('click', function(e) {
             e.preventDefault();
-            const pesanUmum = "Halo Ummik ratih, saya mau tanya-tanya tentang kuenya atau mau request pesanan khusus nih...";
+            const pesanUmum = "Halo Ummik Ratih, saya mau tanya-tanya tentang kuenya atau mau request pesanan khusus nih...";
             bukaWhatsApp(pesanUmum);
         });
     }
 
-    // Fungsi Utama untuk membuka jendela WhatsApp
+    // 3. LOGIKA TOMBOL BACK TO TOP (Saran No. 4)
+    const backToTopBtn = document.getElementById("backToTop");
+    
+    if (backToTopBtn) {
+        window.onscroll = function() {
+            // Munculkan tombol jika sudah scroll ke bawah lebih dari 300px
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                backToTopBtn.style.display = "flex";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+
+        // Fungsi saat tombol panah diklik
+        backToTopBtn.addEventListener("click", function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0, 
+                behavior: 'smooth' // Efek scroll halus ke atas
+            });
+        });
+    }
+
+    // 4. FUNGSI UTAMA UNTUK MEMBUKA WHATSAPP
     function bukaWhatsApp(pesan) {
         const url = `https://wa.me/${NOMOR_WA}?text=${encodeURIComponent(pesan)}`;
         window.open(url, '_blank');
