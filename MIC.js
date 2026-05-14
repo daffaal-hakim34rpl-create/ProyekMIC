@@ -1,4 +1,49 @@
 // ==========================================
+// KONFIGURASI NOMOR WHATSAPP (AKTIF)
+// ==========================================
+const NOMOR_WA = "628175089231"; 
+
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // 1. LOGIKA UNTUK HALAMAN MENU (MenuMIC.html)
+    const tombolPesanMenu = document.querySelectorAll('.btn-wa');
+
+    tombolPesanMenu.forEach(tombol => {
+        tombol.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Mengambil info dari kartu menu
+            const kartuMenu = this.closest('.menu-info');
+            if (kartuMenu) {
+                const namaKue = kartuMenu.querySelector('h3').innerText;
+                const hargaKue = kartuMenu.querySelector('.price').innerText;
+                
+                const teksPesan = `Halo Dapurnya Ummi Kratih, saya ingin memesan:\n\n` +
+                                  `🍰 *Produk:* ${namaKue}\n` +
+                                  `💰 *Harga:* ${hargaKue}\n\n` +
+                                  `Mohon info cara pembayarannya ya Ummi. Terima kasih!`;
+                
+                bukaWhatsApp(teksPesan);
+            }
+        });
+    });
+
+    // 2. LOGIKA UNTUK TOMBOL "CHAT ADMIN" (PesanMIC.html)
+    const tombolChatAdmin = document.querySelector('.wa-large-btn');
+    if (tombolChatAdmin) {
+        tombolChatAdmin.addEventListener('click', function(e) {
+            e.preventDefault();
+            const pesanUmum = "Halo Ummi Kratih, saya mau tanya-tanya tentang kuenya atau mau request pesanan khusus nih...";
+            bukaWhatsApp(pesanUmum);
+        });
+    }
+
+    // Fungsi Pembantu untuk membuka WhatsApp
+    function bukaWhatsApp(pesan) {
+        const url = `https://wa.me/${NOMOR_WA}?text=${encodeURIComponent(pesan)}`;
+        window.open(url, '_blank');
+    }
+});// ==========================================
 // KONFIGURASI NOMOR WHATSAPP
 // ==========================================
 // Ganti dengan nomor Ummi, awali dengan 62 (tanpa tanda + atau spasi)
